@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的 JS 遊戲大廳</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .game-card {
+      transition: all 0.3s ease;
+    }
+    .game-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-white">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <!-- 標題 -->
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold mb-3 tracking-tight">
+        🎮 我的遊戲大廳
+      </h1>
+      <p class="text-slate-400 text-xl">收集各種有趣的 JavaScript 小遊戲</p>
+    </div>
+
+    <!-- 搜尋框 -->
+    <div class="max-w-md mx-auto mb-10">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="searchInput"
+          placeholder="搜尋遊戲名稱..." 
+          class="w-full bg-slate-800/70 border border-slate-600 rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-500 transition-colors text-lg"
+        >
+        <i class="fas fa-search absolute right-6 top-4 text-slate-400"></i>
+      </div>
+    </div>
+
+    <!-- 遊戲列表 -->
+    <div id="gameGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- 遊戲卡片會由 JavaScript 動態產生 -->
+    </div>
+  </div>
+
+  <script>
+    // ==================== 在這裡新增遊戲 ====================
+    const games = [
+      {
+        title: "Flappy Bird",
+        desc: "經典飛躍小鳥",
+        path: "games/flappy-bird/index.html",
+        icon: "🦅"
+      },
+      {
+        title: "貪食蛇",
+        desc: "經典 Snake 遊戲",
+        path: "games/snake/index.html",
+        icon: "🐍"
+      },
+      {
+        title: "2048",
+        desc: "數字合成益智遊戲",
+        path: "games/2048/index.html",
+        icon: "🔢"
+      },
+      {
+        title: "俄羅斯方塊",
+        desc: "經典 Tetris",
+        path: "games/tetris/index.html",
+        icon: "📦"
+      }
+      // 新增遊戲時只要複製下面這一段，修改內容即可：
+      // {
+      //   title: "遊戲名稱",
+      //   desc: "簡單描述",
+      //   path: "games/你的遊戲資料夾/index.html",
+      //   icon: "🎮"   // 可使用 emoji
+      // }
+    ];
+
+    // 渲染遊戲卡片
+    function renderGames(filteredGames) {
+      const grid = document.getElementById('gameGrid');
+      grid.innerHTML = '';
+
+      filteredGames.forEach(game => {
+        const card = document.createElement('a');
+        card.href = game.path;
+        card.target = "_blank";
+        card.className = `
+          game-card block p-6 rounded-3xl glass border border-slate-700 
+          hover:border-blue-500 group
+        `;
+        
+        card.innerHTML = `
+          <div class="text-6xl mb-6 transition-transform group-hover:scale-110">
+            ${game.icon}
+          </div>
+          <h3 class="text-2xl font-semibold mb-2">${game.title}</h3>
+          <p class="text-slate-400 line-clamp-2">${game.desc}</p>
+          <div class="mt-6 pt-6 border-t border-slate-700 text-blue-400 text-sm flex items-center gap-2">
+            <span>開始遊戲</span>
+            <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // 搜尋功能
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      const filtered = games.filter(game => 
+        game.title.toLowerCase().includes(term) || 
+        game.desc.toLowerCase().includes(term)
+      );
+      renderGames(filtered);
+    });
+
+    // 初始化
+    renderGames(games);
+  </script>
+</body>
+</html>
