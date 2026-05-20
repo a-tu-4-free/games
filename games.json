@@ -7,16 +7,34 @@
       "icon": "🦅"
     },
     {
-      "title": "貪食蛇",
-      "desc": "經典 Snake 遊戲",
-      "path": "games/snake/index.html",
-      "icon": "🐍"
+      "title": "Memory Game",
+      "desc": "記憶遊戲",
+      "path": "games/MemoryGame-master/index.html",
+      "icon": "🐶"
     },
     {
       "title": "2048",
       "desc": "數字合成益智遊戲",
-      "path": "games/2048/index.html",
+      "path": "games/2048-master/index.html",
       "icon": "🔢"
+    },
+	{
+      "title": "Pacman",
+      "desc": "小精靈遊戲",
+      "path": "games/pacman-master/index.html",
+      "icon": "🟡"
+    },
+	{
+      "title": "Zombie",
+      "desc": "殭屍遊戲",
+      "path": "games/zombie-master/index.html",
+      "icon": "🧟"
+    },
+	{
+      "title": "九宮格",
+      "desc": "井字遊戲",
+      "path": "games/tic-tac-toe-master/index.html",
+      "icon": "❌"
     }
   ]
 }
