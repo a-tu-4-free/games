@@ -1,0 +1,22 @@
+{
+  "games": [
+    {
+      "title": "Flappy Bird",
+      "desc": "經典飛躍小鳥",
+      "path": "games/flappy-bird/index.html",
+      "icon": "🦅"
+    },
+    {
+      "title": "貪食蛇",
+      "desc": "經典 Snake 遊戲",
+      "path": "games/snake/index.html",
+      "icon": "🐍"
+    },
+    {
+      "title": "2048",
+      "desc": "數字合成益智遊戲",
+      "path": "games/2048/index.html",
+      "icon": "🔢"
+    }
+  ]
+}
